@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     if(!validaSessao()){
-        // window.location.href = '../../index.html';
-        carregaItens();
+        window.location.href = '../../index.html';
     }else{
         carregaItens();
     }
@@ -12,7 +11,7 @@ document.getElementById("novo").addEventListener("click", function(){
 });
 
 function validaSessao(){
-    if(localStorage.getItem("sessao")){
+    if(sessionStorage.getItem("sessao")){
         return true;
     }else{
         return false;
