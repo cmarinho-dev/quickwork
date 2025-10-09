@@ -31,7 +31,7 @@ async function login() {
         console.log(usersList[i].email == email)
         console.log(usersList[i].password == password)
         if (usersList[i].email == email && usersList[i].password == password) {
-            sessionStorage.setItem("users", JSON.stringify(usersList[i]))
+            sessionStorage.setItem("sessao", JSON.stringify(usersList[i]))
             window.location.href = "localizacao/localizacao/"
             return
         }
