@@ -4,11 +4,8 @@ let localizacao = {};
 let localizacoes = {};
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(id)
-    if(true){ // check if prams not null
-        console.log(id)
-        // window.location.href = '../../index.html';
-        loadForm();
+    if(!sessionStorage.getItem('sessao')){ // check if prams not null
+        window.location.href = '../../index.html';
     }else{
         loadForm();
     }
