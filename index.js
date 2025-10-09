@@ -24,19 +24,14 @@ async function login() {
     var email = document.getElementById("login_username").value;
     var password = document.getElementById("login_password").value;
 
-    console.log(email)
-    console.log(password)
-
     for (i = 0; i < usersList.length; i++) {
         console.log(usersList[i].email == email)
         console.log(usersList[i].password == password)
         if (usersList[i].email == email && usersList[i].password == password) {
             sessionStorage.setItem("sessao", JSON.stringify(usersList[i]))
-            window.location.href = "localizacao/localizacao/"
-            return
+            window.location.href = "./localizacao/localizacao/index.html"
         }
     }
-    alert("Usuário ou senha inválidos")
 }
 
 
