@@ -1,22 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    if(!validaSessao()){
-        window.location.href = '../../index.html';
+    if(sessionStorage.getItem("sessao")){
+        carregaItens()
     }else{
-        carregaItens();
+        window.location.href = '../../index.html';
     }
 });
 
 document.getElementById("novo").addEventListener("click", function(){
-    window.location.href = "../localizacao/nova_localizacao.html";
+    window.location.href = "novo.html";
 });
-
-function validaSessao(){
-    if(sessionStorage.getItem("sessao")){
-        return true;
-    }else{
-        return false;
-    }
-}
 
 function carregaItens(){
     if(localStorage.getItem("localizacoes")){
@@ -47,12 +39,6 @@ function carregaItens(){
 
         html += "</table>";
         document.getElementById("lista").innerHTML = html;
-    }else{
-        var obj = {nome: "teste", email: "teste", nasc: "teste"};
-        var lista = [];
-        lista.push(obj);
-        localStorage.setItem("listaClientes",JSON.stringify(lista));
-        window.location.reload();
     }
 }
 
@@ -64,6 +50,6 @@ function excluir(id){
 }
 
 function atualizar(id){
-    window.location.href = "../localizacao/upd_localizacao.html?id=" + id;
+    window.location.href = "atualizar.html?id=" + id;
 }
 

@@ -1,23 +1,23 @@
 let url = new URL(window.location.href);
 let id = url.searchParams.get('id');
 let localizacao = {};
-let localizacoes = {};
+let localizacoes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    if(!sessionStorage.getItem('sessao')){ // check if prams not null
+    if(!sessionStorage.getItem('sessao')){
         window.location.href = '../../index.html';
     }else{
-        loadForm();
+        carregarItens();
     }
 });
 
 document.getElementById("enviar").addEventListener("click", () => {
-    updateAndSave()
+    atualizar()
 });
 
-function loadForm() {
-    if (!existsValidId()) {
-        window.location.href = '../localizacao/index.html';
+function carregarItens() {
+    if (!parametroValido()) {
+        window.location.href = 'home.html';
     }
 
     document.getElementById("rua").value = localizacao.rua
@@ -26,7 +26,7 @@ function loadForm() {
     document.getElementById("cep").value = localizacao.cep;
 }
 
-function existsValidId () {
+function parametroValido () {
     if (id == null) {
         return false
     }
@@ -35,7 +35,7 @@ function existsValidId () {
     return localizacao;
 }
 
-function updateAndSave() {
+function atualizar() {
     localizacao.rua = document.getElementById("rua").value;
     localizacao.numero = document.getElementById("numero").value;
     localizacao.bairro = document.getElementById("bairro").value;
@@ -43,5 +43,5 @@ function updateAndSave() {
     localizacoes[id] = localizacao;
     localStorage.setItem("localizacoes", JSON.stringify(localizacoes));
 
-    window.location.href = "../localizacao/index.html";
+    window.location.href = "home.html";
 }

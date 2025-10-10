@@ -15,35 +15,35 @@ loginBtn.addEventListener('click', () => {
 
 
 //LOGIN
-document.getElementById("loginBtn").addEventListener('click', function() {
+document.getElementById("loginBtn").addEventListener('click', function () {
     login();
 });
-async function login() {
+function login() {
     var usersList = JSON.parse(localStorage.getItem("users")) ?? []
 
     var email = document.getElementById("login_username").value;
     var password = document.getElementById("login_password").value;
 
     for (i = 0; i < usersList.length; i++) {
-        console.log(usersList[i].email == email)
-        console.log(usersList[i].password == password)
         if (usersList[i].email == email && usersList[i].password == password) {
             sessionStorage.setItem("sessao", JSON.stringify(usersList[i]))
-            window.location.href = "./localizacao/localizacao/index.html"
+            window.location.href = "./_home/index.html";
+            return;
         }
     }
+    alert("Credenciais inválidas");
 }
 
 
 
 
-//REGISTER
-document.getElementById("registerBtn").addEventListener('click', function() {
+//REGISTRO
+document.getElementById("registerBtn").addEventListener('click', function () {
     register();
 });
-async function register() {
+function register() {
     var usersList = JSON.parse(localStorage.getItem("users")) ?? []
-    var user = { 
+    var user = {
         username: document.getElementById("reg_username").value,
         email: document.getElementById("reg_email").value,
         password: document.getElementById("reg_password").value
@@ -51,14 +51,10 @@ async function register() {
 
     for (i = 0; i < usersList.length; i++) {
         if (usersList[i].email == user.email) {
-            alert("este usuário já existe")
-            return
+            alert("Este usuário já existe");
+            return;
         }
     }
-
-    console.log(usersList)
     usersList.push(user)
     localStorage.setItem("users", JSON.stringify(usersList));
-
-    window.location.reload();
 }
