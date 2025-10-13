@@ -11,31 +11,27 @@ document.getElementById("novo").addEventListener("click", function(){
 });
 
 function carregaItens(){
-    if(localStorage.getItem("localizacoes")){
-        var lista = JSON.parse(localStorage.getItem("localizacoes"));
+    if(localStorage.getItem("servicos")){
+        var lista = JSON.parse(localStorage.getItem("servicos"));
         var html = "";
         html += "<table>";
         html += "<tr>";
         html += "<td>#</td>";
         html += "<td> </td>";
-        html += "<td>Rua</td>";
-        html += "<td>Numero</td>";
-        html += "<td>Bairro</td>";
-        html += "<td>CEP</td>";
+        html += "<td>Categoria</td>";
+        html += "<td>Titulo</td>";
+        html += "<td>Descricao</td>";
         html += "</tr>";
 
         for(var i=0;i<lista.length;i++){
             html += "<tr>";
             html += "<td><a href='javascript:excluir("+i+")'>Excluir</a></td>";
             html += "<td><a href='javascript:atualizar("+i+")'>Atualizar</a></td>";
-            html += "<td>"+lista[i].rua+"</td>";
-            html += "<td>"+lista[i].numero+"</td>";
-            html += "<td>"+lista[i].bairro+"</td>";
-            html += "<td>"+lista[i].cep+"</td>";
+            html += "<td>"+lista[i].categoria+"</td>";
+            html += "<td>"+lista[i].titulo+"</td>";
+            html += "<td>"+lista[i].descricao+"</td>";
             html += "</tr>";
         }
-
-
 
         html += "</table>";
         document.getElementById("lista").innerHTML = html;
@@ -43,9 +39,9 @@ function carregaItens(){
 }
 
 function excluir(id){
-    var listaClientes = JSON.parse(localStorage.getItem("localizacoes"));
-    listaClientes.splice(id,1);
-    localStorage.setItem("localizacoes",JSON.stringify(listaClientes));
+    var listaUsuarios = JSON.parse(localStorage.getItem("servicos"));
+    listaUsuarios.splice(id,1);
+    localStorage.setItem("servicos",JSON.stringify(listaUsuarios));
     window.location.reload();
 }
 

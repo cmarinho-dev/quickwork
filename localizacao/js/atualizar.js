@@ -4,7 +4,7 @@ let localizacao = {};
 let localizacoes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    if(!sessionStorage.getItem('sessao')){
+    if(!localStorage.getItem('sessao')){
         window.location.href = '../../index.html';
     }else{
         carregarItens();

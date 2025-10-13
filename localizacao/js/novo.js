@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (sessionStorage.getItem("sessao")) {
+    if (localStorage.getItem("sessao")) {
 
         document.getElementById("enviar").addEventListener("click", function () {
             armazenar();
@@ -16,11 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function armazenar() {
     var listaLocalizacoes = JSON.parse(localStorage.getItem("localizacoes")) ?? [];
-    var obj = { rua: "", numero: "", bairro: "", cep: "" };
-    obj.rua = document.getElementById("rua").value;
-    obj.numero = document.getElementById("numero").value;
-    obj.bairro = document.getElementById("bairro").value;
-    obj.cep = document.getElementById("cep").value;
-    listaLocalizacoes.push(obj);
+    var localizacao = { 
+        rua: "", 
+        numero: "", 
+        bairro: "", 
+        cep: "" 
+    };
+    localizacao.rua = document.getElementById("rua").value;
+    localizacao.numero = document.getElementById("numero").value;
+    localizacao.bairro = document.getElementById("bairro").value;
+    localizacao.cep = document.getElementById("cep").value;
+    listaLocalizacoes.push(localizacao);
     localStorage.setItem("localizacoes", JSON.stringify(listaLocalizacoes));
 }
