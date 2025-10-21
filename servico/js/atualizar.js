@@ -23,6 +23,12 @@ function carregarItens() {
     document.getElementById("categoria").value = servico.categoria;
     document.getElementById("titulo").value = servico.titulo;
     document.getElementById("descricao").value = servico.descricao;
+    if(servico.tipo == "presencial") {
+        document.querySelector('input[value="presencial"]').checked = true;
+    } else {
+        document.querySelector('input[value="online"]').checked = true;
+    }
+    servico.tipo = document.querySelector('input[name="tipo"]:checked').value;
 }
 
 function parametroValido () {
@@ -38,6 +44,7 @@ function atualizar() {
     servico.categoria = document.getElementById("categoria").value;
     servico.titulo = document.getElementById("titulo").value;
     servico.descricao = document.getElementById("descricao").value;
+    servico.tipo = document.querySelector('input[name="tipo"]:checked').value;
     servicos[id] = servico;
     localStorage.setItem("servicos", JSON.stringify(servicos));
 

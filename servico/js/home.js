@@ -21,6 +21,7 @@ function carregaItens(){
         html += "<td>Categoria</td>";
         html += "<td>Titulo</td>";
         html += "<td>Descricao</td>";
+        html += "<td>Tipo</td>";
         html += "</tr>";
 
         for(var i=0;i<lista.length;i++){
@@ -30,6 +31,7 @@ function carregaItens(){
             html += "<td>"+lista[i].categoria+"</td>";
             html += "<td>"+lista[i].titulo+"</td>";
             html += "<td>"+lista[i].descricao+"</td>";
+            html += "<td>"+lista[i].tipo+"</td>";
             html += "</tr>";
         }
 
